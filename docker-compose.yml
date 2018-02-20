@@ -1,0 +1,49 @@
+version: '3'
+
+services:
+  scalar_db:
+    image: mysql:latest
+    container_name: scalar_db
+    restart: always
+    ports:
+      - 3306:3306
+    volumes:
+      - ./db:/var/lib/mysql
+      - ./build/db/dump.sql:/docker-entrypoint-initdb.d/dump.sql
+    environment:
+      - MYSQL_ROOT_PASSWORD=dbrootpw
+  scalar_app:
+    build: build/app
+    container_name: scalar_app
+    restart: always
+    environment:
+      - VIRTUAL_HOST=piranesi.dev-cdh.org
+      - SCALAR_DB_HOSTNAME=scalar_db
+      - SCALAR_DB_USERNAME=root
+      - SCALAR_DB_PASSWORD=dbrootpw
+      - SCALAR_DB_DATABASE=scalar_app
+      - SCALAR_SHASALT='insert_something_here'
+      - SCALAR_RECAPTCHA2_SITE_KEY=6Lfwa0YUAAAAAJoWYNy8o71Kf08cS4LBxE0oqAEw
+      - SCALAR_RECAPTCHA2_SECRET_KEY='6Lfwa0YUAAAAAO2lWB_9crhi3SmxJYT3ZVKrM0vx'
+      - SCALAR_ENCRYPTION_KEY='a_key'
+#      - SCALAR_COOKIE_DOMAIN='.ecrituresnumeriques.ca'
+#      - SCALAR_COOKIE_PREFIX='ecrnum_'
+      - SCALAR_INSTALL_NAME=Piranesi - Dev
+      - SCALAR_SOUNDCLOUD_ID=''
+      - SCALAR_DPLA_KEY=''
+      - SCALAR_FLOWPLAYER_KEY=''
+      - SCALAR_GOOGLE_MAPS_KEY='a_key'
+      - SCALAR_EMAIL_REPLYTO_ADDRESS='scalar@ecrituresnumeriques.ca'
+      - SCALAR_EMAIL_REPLYTO_NAME='Scalar UdM'
+      - SCALAR_SMTP_HOST=localhost
+      - SCALAR_SMTP_USERNAME=''
+      - SCALAR_SMTP_PASSWORD=''
+    links:
+      - scalar_db
+
+
+# A docker network to communicate with the Nginx-Proxy server
+networks:
+  default:
+    external:
+      name: nginx-proxy
