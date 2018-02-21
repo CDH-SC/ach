@@ -2,14 +2,16 @@ version: '3'
 
 services:
   scalar_db:
-    image: mysql:latest
+    build: build/db #mysql:latest
     container_name: scalar_db
     restart: always
+    privileged: true
     ports:
       - 3306:3306
     volumes:
       - ./db:/var/lib/mysql
-      - ./build/db/dump.sql:/docker-entrypoint-initdb.d/dump.sql
+      #- ./build/db/:/docker-entrypoint-initdb.d/:Z
+      #- ./build/db:/dump
     environment:
       - MYSQL_ROOT_PASSWORD=dbrootpw
   scalar_app:
