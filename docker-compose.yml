@@ -1,48 +1,83 @@
-version: '3'
+################################################################################
+#                                     BOILER PLATE
+# Project: Always Coming Home
+# Description:
+#
+#
+# Technology Stack:
+# - Scalar (https://github.com/anvc/scalar)
+# - uses MySql database
+################################################################################
+
+version: '3.6'
 
 services:
+  #database
   scalar_db:
     build: build/db #mysql:latest
-    container_name: scalar_db
+    container_name: ach_db
     restart: always
     privileged: true
     ports:
-      - 3306:3306
+      # hostside:containerside - hostside is docker network, therefore needs to
+      # be different than others (3306 is in use on host) however container
+      # will not have external conflict, cos its container
+      - 33000:3307
     volumes:
+      # using file to copy over data
       - ./db:/var/lib/mysql
       #- ./build/db/:/docker-entrypoint-initdb.d/:Z
+      #initial copy over of the dump.sql file
       #- ./build/db:/dump
     environment:
       - MYSQL_ROOT_PASSWORD=dbrootpw
+
+#scalar app
   scalar_app:
     build: build/app
-    container_name: scalar_app
-    restart: always
+    container_name: ach_app
+    restart: always #restarts container when server is taken down
     environment:
-      - VIRTUAL_HOST=piranesi.dev-cdh.org
+      - VIRTUAL_HOST=ach.dev-cdh.org
       - SCALAR_DB_HOSTNAME=scalar_db
       - SCALAR_DB_USERNAME=root
       - SCALAR_DB_PASSWORD=dbrootpw
       - SCALAR_DB_DATABASE=scalar_app
       - SCALAR_SHASALT='insert_something_here'
-      - SCALAR_RECAPTCHA2_SITE_KEY=6Lfwa0YUAAAAAJoWYNy8o71Kf08cS4LBxE0oqAEw
-      - SCALAR_RECAPTCHA2_SECRET_KEY='6Lfwa0YUAAAAAO2lWB_9crhi3SmxJYT3ZVKrM0vx'
+      - SCALAR_RECAPTCHA2_SITE_KEY=6LfdBE8UAAAAAJOPkdfQXXRZdr1KIh2vVsCwoja9
+      - SCALAR_RECAPTCHA2_SECRET_KEY='6LfdBE8UAAAAAKuvmQyWdhPKeCjtq16ujfznpWYL'
       - SCALAR_ENCRYPTION_KEY='a_key'
 #      - SCALAR_COOKIE_DOMAIN='.ecrituresnumeriques.ca'
 #      - SCALAR_COOKIE_PREFIX='ecrnum_'
-      - SCALAR_INSTALL_NAME=Piranesi - Dev
+      - SCALAR_INSTALL_NAME= Always Coming Home
       - SCALAR_SOUNDCLOUD_ID=''
       - SCALAR_DPLA_KEY=''
       - SCALAR_FLOWPLAYER_KEY=''
       - SCALAR_GOOGLE_MAPS_KEY='a_key'
-      - SCALAR_EMAIL_REPLYTO_ADDRESS='scalar@ecrituresnumeriques.ca'
+      - SCALAR_EMAIL_REPLYTO_ADDRESS='rcarff@gmail.com'
       - SCALAR_EMAIL_REPLYTO_NAME='Scalar UdM'
       - SCALAR_SMTP_HOST=localhost
       - SCALAR_SMTP_USERNAME=''
       - SCALAR_SMTP_PASSWORD=''
     links:
       - scalar_db
+     #- ach_media
 
+
+#     THIS IS THE CONTAINER TO HOST OUR LOCAL MEDIA
+
+  ach_media:
+    build: ./ach_media
+    ports:
+      - 8080
+    environment:
+      - VIRTUAL_HOST=achimages.dev-cdh.org
+    volumes:
+        # source is directory path
+        # WE ARE POINTING INSTEAD OF COPYING !!!
+      - type: bind
+        source: ./ach_media/public
+        target: /public
 
 # A docker network to communicate with the Nginx-Proxy server
 networks:
