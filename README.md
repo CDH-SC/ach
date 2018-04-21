@@ -1,4 +1,4 @@
-# Always Coming Home 
+# Always Coming Home
 
 Always Coming Home: The American Female Veteran Experience Archive is designed to provide ongoing documentation of the diverse combat and service situations women in the military face as well as recording the experiences of the increasing numbers of female veterans whose return to civilian life has been affected by their years of service. Women veterans are interviewed, on video, and invited to share their reasons for joining the military, their experiences while in service, and the opportunities and setbacks they have faced upon return to civilian life. This project includes the short documentary “Soldier Girl.” There are currently over 50 interviews in the archive, some of which you can view here.
 
@@ -14,9 +14,9 @@ A system running docker, the rest of the dependancies will be loaded into the co
 
 A step by step series of examples that tell you have to get a development env running
 
-* PULL Project from github. 
+* PULL Project from github.
   This contains the Application, the Database, and a media webserver  all wrapped up in a docker-compose system.
- 
+
 * Instantiate the database by piping the the backup to the scalar_db file using
 Tyler Moons [backup/restore](https://github.com/CDH-SC/ddbb) tool
 
@@ -36,13 +36,13 @@ docker-compose up
 ## Built With
 
 * [Scalar](https://scalar.me/anvc/scalar/) - Application, The web framework used
-* [MySQL](https://maven.apache.org/) - Database, holding the schema for Scalar
+* [MySQL](https://www.mysql.com/ - Database, holding the schema for Scalar
 * [HTML](www.html.com) - The media server hosting our media, which is contained in the public folder
-* [ROME](https://rometools.github.io/rome/) - Docker, the container system used to manage all of our projects here at The Center for Digital Humanities 
+* [Docker](https://www.docker.com/) - Docker, the container system used to manage all of our projects here at The Center for Digital Humanities
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+Please read [CONTRIBUTING.md](https://github.com/CDH-SC/ach) for details on our code of conduct, and the process for submitting pull requests to us.
 
 ## Versioning
 
@@ -59,5 +59,3 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 ## Acknowledgments
 
 * Tyler Moons ddbb tool - [tmoon](https://github.com/tmoon8730)
-* Inspiration
-* etc
