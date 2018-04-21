@@ -36,8 +36,9 @@ docker-compose up
 ## Built With
 
 * [Scalar](https://scalar.me/anvc/scalar/) - Application, The web framework used
-* [MySQL](https://www.mysql.com/ - Database, holding the schema for Scalar
-* [HTML](www.html.com) - The media server hosting our media, which is contained in the public folder
+* [MySQL](https://www.mysql.com/) - Database, holding the schema for Scalar
+* [HTML](www.html.com) - The media server hosting our media, which is contained in the public directory
+* media is accessable at http://achimages.dev-cdh.org/imagenamehere
 * [Docker](https://www.docker.com/) - Docker, the container system used to manage all of our projects here at The Center for Digital Humanities
 
 ## Contributing
@@ -54,7 +55,8 @@ The github version should be the current state of this project. Scalar is used a
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+Remade at/for the Univeristy of South Carolina, originally made by Cathy Brookshire
+https://mirc.sc.edu/islandora/object/usc-test:174
 
 ## Acknowledgments
 
