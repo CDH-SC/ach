@@ -14,7 +14,7 @@ version: '3.6'
 services:
   #database
   scalar_db:
-    build: build/db #mysql:latest
+    build: build/dbbuild #mysql:latest
     container_name: ach_db
     restart: always
     privileged: true
