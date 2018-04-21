@@ -36,13 +36,14 @@ docker-compose up
 ## Built With
 
 * [Scalar](https://scalar.me/anvc/scalar/) - Application, The web framework used
-* [MySQL](https://maven.apache.org/) - Database, holding the schema for Scalar
-* [HTML](www.html.com) - The media server hosting our media, which is contained in the public folder
-* [ROME](https://rometools.github.io/rome/) - Docker, the container system used to manage all of our projects here at The Center for Digital Humanities 
+* [MySQL](https://www.mysql.com/) - Database, holding the schema for Scalar
+* [HTML](www.html.com) - The media server hosting our media, which is contained in the public directory 
+* media is accessable at http://achimages.dev-cdh.org/imagenamehere
+* [Docker](https://www.docker.com/) - Docker, the container system used to manage all of our projects here at The Center for Digital Humanities 
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+Please read [CONTRIBUTING.md](https://github.com/CDH-SC/ach) for details on our code of conduct, and the process for submitting pull requests to us.
 
 ## Versioning
 
@@ -54,10 +55,9 @@ The github version should be the current state of this project. Scalar is used a
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+Remade at/for the Univeristy of South Carolina, originally made by Cathy Brookshire
+https://mirc.sc.edu/islandora/object/usc-test:174
 
 ## Acknowledgments
 
 * Tyler Moons ddbb tool - [tmoon](https://github.com/tmoon8730)
-* Inspiration
-* etc
