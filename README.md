@@ -1,4 +1,4 @@
-# Project Title
+# Always Coming Home 
 
 Always Coming Home: The American Female Veteran Experience Archive is designed to provide ongoing documentation of the diverse combat and service situations women in the military face as well as recording the experiences of the increasing numbers of female veterans whose return to civilian life has been affected by their years of service. Women veterans are interviewed, on video, and invited to share their reasons for joining the military, their experiences while in service, and the opportunities and setbacks they have faced upon return to civilian life. This project includes the short documentary “Soldier Girl.” There are currently over 50 interviews in the archive, some of which you can view here.
 
@@ -7,62 +7,38 @@ Always Coming Home: The American Female Veteran Experience Archive is designed t
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
 ### Prerequisites
-A system running docker, the rest of the dependancies will be loaded into the containers on initialization using docker-compose up
 
-```
-Give examples
-```
+A system running docker, the rest of the dependancies will be loaded into the containers on initialization from the docker files
+
 ### Installing
 
 A step by step series of examples that tell you have to get a development env running
-Say what the step will be
 
-Once all of this has been complete,
-instantiate the database by piping the the backup to the scalar_db file using
+* PULL Project from github. 
+  This contains the Application, the Database, and a media webserver  all wrapped up in a docker-compose system.
+ 
+* Instantiate the database by piping the the backup to the scalar_db file using
 Tyler Moons [backup/restore](https://github.com/CDH-SC/ddbb) tool
 
+```
+ddbb -r <container_name> <database> <root password> <outputfile.sql>
+```
+### Deployment
+
+Once the scheme has been insterted into the database, the Scalar front end (installed in the docker container with the docker file) should be able to read all media/pathways. If the page is blank, this mean the containers are either not properly conected or you database was not restored properly
+
+Now that the database has been restored, boot up the containers using the command:
 
 ```
-Give the example
+docker-compose up
 ```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
 
 ## Built With
 
-* [Scalar](https://scalar.me/anvc/scalar/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+* [Scalar](https://scalar.me/anvc/scalar/) - Application, The web framework used
+* [MySQL](https://maven.apache.org/) - Database, holding the schema for Scalar
+* [HTML](www.html.com) - The media server hosting our media, which is contained in the public folder
+* [ROME](https://rometools.github.io/rome/) - Docker, the container system used to manage all of our projects here at The Center for Digital Humanities 
 
 ## Contributing
 
@@ -70,14 +46,11 @@ Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c6
 
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
+The github version should be the current state of this project. Scalar is used as a Content managment system and should not require any more development besides adding images/test. this is all STORED IN THE DATABASE BACKUP. Therefore the current state of the project will be based on restoring the most current database backup called ach_backup.sql
 
 ## Authors
 
 * **Robert Carff** - *Initial work* - [robbycarff](https://github.com/robbycarff)
-
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
 ## License
 
