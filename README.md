@@ -1,3 +1,12 @@
+### current issues
+A problem with the current build is that the scalar instance uses the old URLs images
+so the URLs that are referenced are no longer up and/or hosting.
+
+We will need to go through the project and use the images with reference to MIRC (where the data was
+origianlly pulled from)
+
+https://mirc.sc.edu/islandora/object/usc-test:174
+
 # Always Coming Home
 
 Always Coming Home: The American Female Veteran Experience Archive is designed to provide ongoing documentation of the diverse combat and service situations women in the military face as well as recording the experiences of the increasing numbers of female veterans whose return to civilian life has been affected by their years of service. Women veterans are interviewed, on video, and invited to share their reasons for joining the military, their experiences while in service, and the opportunities and setbacks they have faced upon return to civilian life. This project includes the short documentary “Soldier Girl.” There are currently over 50 interviews in the archive, some of which you can view here.
